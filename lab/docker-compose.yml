@@ -1,0 +1,24 @@
+name: loom-190-adk-a2a-hitl
+
+services:
+  lab:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:18740:18740"
+    environment:
+      AWS_EC2_METADATA_DISABLED: "true"
+      AWS_DEFAULT_REGION: "us-east-1"
+      AWS_REGION: "us-east-1"
+      AWS_ACCESS_KEY_ID: "lab"
+      AWS_SECRET_ACCESS_KEY: "lab"
+      LOOM_SRC_ROOT: "/opt/loom"
+      LAB_LABEL: "LOOM-190-ADK-A2A-HITL"
+      LAB_WITNESS: "LOOM-190-ADK-A2A-HITL-WITNESS"
+      LAB_HOST: "127.0.0.1"
+      LAB_PORT: "18740"
+    volumes:
+      - ./poc.py:/lab/poc.py:ro
+    labels:
+      - "LOOM-190-ADK-A2A-HITL"
